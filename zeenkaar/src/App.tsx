@@ -4,7 +4,7 @@ const App = () => {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       <header className="bg-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
+        <div className="mx-auto flex w-full items-center justify-between px-5 py-5 md:px-8 lg:px-10">
           <div className="text-xl font-semibold tracking-wide">ZEENKAAR</div>
 
           <nav className="hidden items-center gap-10 text-sm font-medium md:flex">
@@ -98,7 +98,7 @@ const App = () => {
       </header>
 
       <main className="bg-black text-white">
-        <div className="mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-24 text-center md:px-10 md:py-28 lg:py-32">
+        <div className="mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-24 text-center md:max-w-6xl md:px-8 md:py-28 lg:px-10 lg:py-32">
           <h1 className="text-4xl font-semibold md:text-6xl">Elevate Your Style</h1>
           <p className="mt-6 max-w-3xl text-lg text-gray-200 md:text-xl">
             Discover the latest collection curated for the modern fashion enthusiast
