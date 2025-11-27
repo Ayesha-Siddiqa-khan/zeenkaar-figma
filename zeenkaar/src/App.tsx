@@ -115,21 +115,9 @@ const App = () => {
   const [authPassword, setAuthPassword] = useState('');
   const [authFirstName, setAuthFirstName] = useState('');
   const [authLastName, setAuthLastName] = useState('');
-  const [menSort, setMenSort] = useState<'newest' | 'price-asc' | 'price-desc'>('newest');
-
-  const sortedMen = React.useMemo(() => {
-    const base = [...menProducts];
-    if (menSort === 'price-asc') {
-      return base.sort((a, b) => a.price - b.price);
-    }
-    if (menSort === 'price-desc') {
-      return base.sort((a, b) => b.price - a.price);
-    }
-    return base; // newest (default order)
-  }, [menSort]);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans">
+    <div className="min-h-screen bg-white text-gray-900 font-sans flex flex-col">
       <header className="sticky top-0 z-30 bg-white/95 shadow-sm backdrop-blur">
         <div className="mx-auto flex w-full items-center px-5 py-4 md:px-8 lg:px-10">
           <div className="text-xl font-semibold tracking-wide">ZEENKAAR</div>
@@ -230,7 +218,7 @@ const App = () => {
         </div>
       </header>
 
-      <main>
+      <main className="flex-1">
         <section className="bg-black text-white">
           <div className="mx-auto flex min-h-[70vh] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center md:px-6 lg:px-8 lg:py-24">
             <h1 className="text-4xl font-semibold md:text-6xl">Elevate Your Style</h1>
@@ -291,49 +279,6 @@ const App = () => {
               <button className="border border-gray-900 px-6 py-3 text-sm font-medium text-gray-900 transition hover:bg-gray-900 hover:text-white">
                 View All Products
               </button>
-            </div>
-          </div>
-        </section>
-
-        <section id="men" className="bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:px-8">
-            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">Men&apos;s Collection</h2>
-                <p className="text-sm text-gray-600">{sortedMen.length} products available</p>
-              </div>
-              <div>
-                <select
-                  value={menSort}
-                  onChange={(e) => setMenSort(e.target.value as 'newest' | 'price-asc' | 'price-desc')}
-                  className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm focus:border-black focus:outline-none"
-                >
-                  <option value="newest">Newest First</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {sortedMen.map((item) => (
-                <article
-                  key={item.id}
-                  className="overflow-hidden rounded-xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="h-64 bg-black" />
-                  <div className="px-4 pb-5 pt-4">
-                    <p className="text-xs uppercase tracking-wide text-gray-500">{item.category}</p>
-                    <h3 className="mt-1 text-lg font-medium text-gray-900">{item.title}</h3>
-                    <div className="mt-2 flex items-baseline gap-2">
-                      <span className="text-lg font-semibold text-gray-900">${item.price}</span>
-                      {item.oldPrice && (
-                        <span className="text-sm text-gray-400 line-through">${item.oldPrice}</span>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))}
             </div>
           </div>
         </section>
